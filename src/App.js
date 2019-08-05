@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './configureStore';
 
 import WelcomeContainer from './Components/Welcome/WelcomeContainer';
-import HeroList from './Components/HeroList/HeroList';
+import HeroListContainer from './Components/HeroList/HeroListContainer';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             </ul>
           </nav>
           <Route path="/" exact component={WelcomeContainer} />
-          <Route path="/heroes" component={HeroList} />
+          <Route path="/heroes" component={HeroListContainer} />
         </Router>
       </div>
     </Provider>

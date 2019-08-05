@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
-const allReducers = combineReducers({});
+import heroes from './heroes';
+
+const allReducers = combineReducers({ heroes });
 
 export default allReducers;

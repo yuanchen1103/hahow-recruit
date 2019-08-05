@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { Row, Col, Card } from 'antd';
 
 import styles from './HeroList.module.scss';
 
-const HeroList = () => {
+const HeroList = ({ fetchHeroes }) => {
+  useEffect(() => {
+    fetchHeroes();
+  }, []);
   return (
     <div>
       <div className={styles.wrapper}>
@@ -28,6 +32,10 @@ const HeroList = () => {
       </div>
     </div>
   );
+};
+
+HeroList.propTypes = {
+  fetchHeroes: PropTypes.func.isRequired
 };
 
 export default React.memo(HeroList);
