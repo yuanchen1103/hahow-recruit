@@ -9,53 +9,8 @@ const HeroList = () => {
     <div>
       <div className={styles.wrapper}>
         <Row gutter={16}>
-          <Col className="gutter-row" span={6}>
-            <div className="gutter-box">
-              <Card
-                hoverable
-                cover={
-                  <img
-                    alt="example"
-                    src="http://i.annihil.us/u/prod/marvel/i/mg/6/90/537ba6d49472b/standard_xlarge.jpg"
-                  />
-                }
-              >
-                <Card.Meta title="Daredevil" description="id: 1" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className="gutter-box">
-              <Card
-                hoverable
-                cover={
-                  <img
-                    alt="example"
-                    src="http://i.annihil.us/u/prod/marvel/i/mg/6/90/537ba6d49472b/standard_xlarge.jpg"
-                  />
-                }
-              >
-                <Card.Meta title="Daredevil" description="id: 1" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className="gutter-box">
-              <Card
-                hoverable
-                cover={
-                  <img
-                    alt="example"
-                    src="http://i.annihil.us/u/prod/marvel/i/mg/6/90/537ba6d49472b/standard_xlarge.jpg"
-                  />
-                }
-              >
-                <Card.Meta title="Daredevil" description="id: 1" />
-              </Card>
-            </div>
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <div className="gutter-box">
+          <Col sm={8} md={6}>
+            <div className={styles.card}>
               <Card
                 hoverable
                 cover={
