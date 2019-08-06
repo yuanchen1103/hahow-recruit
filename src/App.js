@@ -6,6 +6,7 @@ import store from './configureStore';
 
 import WelcomeContainer from './Components/Welcome/WelcomeContainer';
 import HeroListContainer from './Components/HeroList/HeroListContainer';
+import HeroProfileContainer from './Components/HeroProfile/HeroProfileContainer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </nav>
           <Route path="/" exact component={WelcomeContainer} />
           <Route path="/heroes" component={HeroListContainer} />
+          <Route path="/heroes/:heroId" component={HeroProfileContainer} />
         </Router>
       </div>
     </Provider>
