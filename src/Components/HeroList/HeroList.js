@@ -1,41 +1,50 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Row, Col, Card } from 'antd';
+import { Row, Col, Card, Spin } from 'antd';
 
 import styles from './HeroList.module.scss';
 
-const HeroList = ({ fetchHeroes }) => {
+const HeroList = ({ fetchHeroes, heroes }) => {
   useEffect(() => {
-    fetchHeroes();
+    if (heroes.needToFetch && !heroes.isFetching) {
+      fetchHeroes();
+    }
   }, []);
   return (
     <div>
       <div className={styles.wrapper}>
-        <Row gutter={16}>
-          <Col sm={8} md={6}>
-            <div className={styles.card}>
-              <Card
-                hoverable
-                cover={
-                  <img
-                    alt="example"
-                    src="http://i.annihil.us/u/prod/marvel/i/mg/6/90/537ba6d49472b/standard_xlarge.jpg"
-                  />
-                }
-              >
-                <Card.Meta title="Daredevil" description="id: 1" />
-              </Card>
-            </div>
-          </Col>
-        </Row>
+        {heroes.isFetching ? (
+          <div className={styles.spinContainer}>
+            <Spin />
+          </div>
+        ) : (
+          <Row gutter={16}>
+            {heroes.list.map((item) => (
+              <Col sm={8} md={6}>
+                <div className={styles.card}>
+                  <Card
+                    hoverable
+                    cover={<img alt={item.name} src={item.image} />}
+                  >
+                    <Card.Meta
+                      title={item.name}
+                      description={`id: ${item.id}`}
+                    />
+                  </Card>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        )}
       </div>
     </div>
   );
 };
 
 HeroList.propTypes = {
-  fetchHeroes: PropTypes.func.isRequired
+  fetchHeroes: PropTypes.func.isRequired,
+  heroes: PropTypes.shape().isRequired
 };
 
 export default React.memo(HeroList);

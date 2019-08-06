@@ -6,7 +6,8 @@ import {
 
 const initState = {
   isFetching: false,
-  list: []
+  list: [],
+  needToFetch: true
 };
 
 const heroes = (state = initState, action) => {
@@ -20,7 +21,8 @@ const heroes = (state = initState, action) => {
       return {
         ...state,
         isFetching: false,
-        list: action.response
+        list: action.response,
+        needToFetch: false
       };
     case FETCH_HEROES_FAILURE:
       return {

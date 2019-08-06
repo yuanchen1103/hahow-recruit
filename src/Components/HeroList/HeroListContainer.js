@@ -4,7 +4,9 @@ import HeroList from './HeroList';
 import { fetchHeroes } from '../../actions/heroes';
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    heroes: state.heroes
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
