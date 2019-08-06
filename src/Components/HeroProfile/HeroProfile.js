@@ -18,6 +18,7 @@ const HeroProfile = ({
   history
 }) => {
   const [editingData, setEditingData] = useState({});
+  const [remaingPoint, setRemaingPoint] = useState(0);
 
   useEffect(() => {
     if (match.params.heroId) {
@@ -28,22 +29,50 @@ const HeroProfile = ({
 
   useEffect(() => {
     setEditingData(profileData);
+    setRemaingPoint(0);
   }, [profileData]);
 
   const handleGoToList = useCallback(() => {
     history.push('/heroes');
+    updateSelectedHero(undefined);
   }, []);
+
+  const handleMinus = useCallback(
+    (key) => {
+      setRemaingPoint(remaingPoint + 1);
+      setEditingData({
+        ...editingData,
+        [key]: (editingData[key] -= 1)
+      });
+    },
+    [editingData]
+  );
+
+  const handlePlus = useCallback(
+    (key) => {
+      setRemaingPoint(remaingPoint - 1);
+      setEditingData({
+        ...editingData,
+        [key]: (editingData[key] += 1)
+      });
+    },
+    [editingData]
+  );
 
   return (
     <div className="container" style={{ marginTop: 20 }}>
       {!heroesIsFetching && (
         <Card
           title={generalData.name}
-          extra={<a onClick={handleGoToList}>Close</a>}
+          extra={
+            <Button type="link" onClick={handleGoToList}>
+              Close
+            </Button>
+          }
           loading={profileIsFetching}
         >
           {KEY_LIST.map((key) => (
-            <p>
+            <p key={key}>
               {key.toUpperCase()}:
               <Button
                 type="primary"
@@ -51,6 +80,8 @@ const HeroProfile = ({
                 icon="minus"
                 size="small"
                 className={styles.minusBtn}
+                onClick={() => handleMinus(key)}
+                disabled={editingData[key] <= 0}
               />
               {editingData[key]}
               <Button
@@ -59,9 +90,12 @@ const HeroProfile = ({
                 icon="plus"
                 size="small"
                 className={styles.plusBtn}
+                onClick={() => handlePlus(key)}
+                disabled={remaingPoint <= 0}
               />
             </p>
           ))}
+          <p>{remaingPoint}</p>
         </Card>
       )}
     </div>
