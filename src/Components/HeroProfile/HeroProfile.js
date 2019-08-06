@@ -5,15 +5,22 @@ import { Row, Col, Card, Spin } from 'antd';
 
 import styles from './HeroProfile.module.scss';
 
-const HeroProfile = ({ fetchHeroes, heroes }) => {
+const HeroProfile = ({ fetchHeroProfile, match }) => {
+  useEffect(() => {
+    if (match.params.heroId) {
+      fetchHeroProfile(match.params.heroId);
+    }
+  }, [match.params.heroId])
   return (
-    <div></div>
+    <div>
+
+    </div>
   );
 };
 
 HeroProfile.propTypes = {
-  fetchHeroes: PropTypes.func.isRequired,
-  heroes: PropTypes.shape().isRequired
+  fetchHeroProfile: PropTypes.func.isRequired,
+  match: PropTypes.shape().isRequired
 };
 
 export default React.memo(HeroProfile);

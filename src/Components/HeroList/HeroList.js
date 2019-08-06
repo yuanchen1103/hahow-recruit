@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import { Row, Col, Card, Spin } from 'antd';
 
@@ -24,10 +25,15 @@ const HeroList = ({ fetchHeroes, heroes, history, match }) => {
             <Spin />
           </div>
         ) : (
-          <Row gutter={16}>
+          <Row gutter={40}>
             {heroes.list.map((item) => (
               <Col sm={8} md={6} key={item.id}>
-                <div className={styles.card}>
+                <div
+                  className={cx(
+                    styles.card,
+                    {/* match.params.heroId === item.id ? styles.selected : null */}
+                  )}
+                >
                   <Card
                     hoverable
                     cover={<img alt={item.name} src={item.image} />}
