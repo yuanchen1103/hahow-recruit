@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './configureStore';
+import './assets/styles/index.scss';
 
 import WelcomeContainer from './Components/Welcome/WelcomeContainer';
 import HeroListContainer from './Components/HeroList/HeroListContainer';

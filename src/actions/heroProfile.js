@@ -15,3 +15,10 @@ export const fetchHeroProfile = (heroId) => ({
     headers: { 'Content-Type': 'application/json' }
   }
 });
+
+export const UPDATE_SELECTED_HERO = 'UPDATE_SELECTED_HERO';
+
+export const updateSelectedHero = (heroId) => ({
+  type: UPDATE_SELECTED_HERO,
+  heroId
+});

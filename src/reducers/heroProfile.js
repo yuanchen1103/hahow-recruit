@@ -1,7 +1,8 @@
 import {
   FETCH_HERO_PROFILE_REQUEST,
   FETCH_HERO_PROFILE_SUCCESS,
-  FETCH_HERO_PROFILE_FAILURE
+  FETCH_HERO_PROFILE_FAILURE,
+  UPDATE_SELECTED_HERO
 } from '../actions/heroProfile';
 
 const initState = {
@@ -10,6 +11,11 @@ const initState = {
 
 const heroProfile = (state = initState, action) => {
   switch (action.type) {
+    case UPDATE_SELECTED_HERO:
+      return {
+        ...state,
+        selectedHero: action.heroId
+      }
     case FETCH_HERO_PROFILE_REQUEST:
       return {
         ...state,

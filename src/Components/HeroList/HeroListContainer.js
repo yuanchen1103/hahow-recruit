@@ -5,7 +5,8 @@ import { fetchHeroes } from '../../actions/heroes';
 
 const mapStateToProps = (state) => {
   return {
-    heroes: state.heroes
+    heroes: state.heroes,
+    selectedHero: state.heroProfile.selectedHero
   };
 };
 
