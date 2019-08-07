@@ -1,12 +1,19 @@
 import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import { Row, Col, Card, Spin } from 'antd';
 
 import styles from './HeroList.module.scss';
+import metalIcon from '../../assets/img/metal.svg';
 
-const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero, updateSelectedHero }) => {
+const HeroList = ({
+  fetchHeroes,
+  heroes,
+  history,
+  match,
+  selectedHero,
+  updateSelectedHero
+}) => {
   // did mount
   useEffect(() => {
     if (heroes.needToFetch && !heroes.isFetching) {
@@ -17,9 +24,9 @@ const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero, updateSel
   // will unmount
   useEffect(() => {
     return () => {
-      updateSelectedHero(undefined)
-    }
-  }, [])
+      updateSelectedHero(undefined);
+    };
+  }, []);
 
   const handleGoToProfile = useCallback((id) => {
     history.push(`${match.path}/${id}`);
@@ -35,12 +42,7 @@ const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero, updateSel
         <Row gutter={40}>
           {heroes.list.map((item) => (
             <Col sm={8} md={6} key={item.id}>
-              <div
-                className={cx(
-                  styles.card,
-                  selectedHero === item.id ? styles.selected : null
-                )}
-              >
+              <div className={styles.card}>
                 <Card
                   hoverable
                   cover={<img alt={item.name} src={item.image} />}
@@ -48,6 +50,9 @@ const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero, updateSel
                   size="small"
                 >
                   <Card.Meta title={item.name} description={`id: ${item.id}`} />
+                  {selectedHero === item.id && (
+                    <img src={metalIcon} alt="metal-icon" className={styles.metalIcon}/>
+                  )}
                 </Card>
               </div>
             </Col>
