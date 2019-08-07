@@ -3,7 +3,8 @@ import HeroProfile from './HeroProfile';
 
 import {
   fetchHeroProfile,
-  updateSelectedHero
+  updateSelectedHero,
+  updateHeroProfile
 } from '../../actions/heroProfile';
 
 const mapStateToProps = (state) => {
@@ -14,7 +15,8 @@ const mapStateToProps = (state) => {
       {},
     profileData: state.heroProfile.data || {},
     heroesIsFetching: state.heroes.isFetching,
-    profileIsFetching: state.heroProfile.isFetching
+    profileIsFetching: state.heroProfile.isFetching,
+    isUpdating: state.heroProfile.isUpdating
   };
 };
 
@@ -25,6 +27,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateSelectedHero: (heroId) => {
       dispatch(updateSelectedHero(heroId));
+    },
+    updateHeroProfile: (heroId, data) => {
+      dispatch(updateHeroProfile(heroId, data));
     }
   };
 };

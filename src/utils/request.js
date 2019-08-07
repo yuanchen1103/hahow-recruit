@@ -1,4 +1,4 @@
-const API_ROOT = 'https://hahow-recruit.herokuapp.com/';
+export const API_ROOT = 'https://hahow-recruit.herokuapp.com/';
 
 export default (endpoint, method, headers, body) => {
   let newHeaders = headers;

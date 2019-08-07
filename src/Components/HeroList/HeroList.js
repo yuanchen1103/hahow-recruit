@@ -6,12 +6,20 @@ import { Row, Col, Card, Spin } from 'antd';
 
 import styles from './HeroList.module.scss';
 
-const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero }) => {
+const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero, updateSelectedHero }) => {
+  // did mount
   useEffect(() => {
     if (heroes.needToFetch && !heroes.isFetching) {
       fetchHeroes();
     }
   }, []);
+
+  // will unmount
+  useEffect(() => {
+    return () => {
+      updateSelectedHero(undefined)
+    }
+  }, [])
 
   const handleGoToProfile = useCallback((id) => {
     history.push(`${match.path}/${id}`);
@@ -54,7 +62,8 @@ HeroList.propTypes = {
   heroes: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
   match: PropTypes.shape().isRequired,
-  selectedHero: PropTypes.string
+  selectedHero: PropTypes.string,
+  updateSelectedHero: PropTypes.func.isRequired
 };
 
 HeroList.defaultProps = {

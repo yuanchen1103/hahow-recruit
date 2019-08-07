@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import HeroList from './HeroList';
 
 import { fetchHeroes } from '../../actions/heroes';
+import { updateSelectedHero } from '../../actions/heroProfile';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,6 +15,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchHeroes: () => {
       dispatch(fetchHeroes());
+    },
+    updateSelectedHero: (heroId) => {
+      dispatch(updateSelectedHero(heroId));
     }
   };
 };
