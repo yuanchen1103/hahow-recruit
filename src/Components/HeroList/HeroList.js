@@ -45,6 +45,7 @@ const HeroList = ({ fetchHeroes, heroes, history, match, selectedHero, updateSel
                   hoverable
                   cover={<img alt={item.name} src={item.image} />}
                   onClick={() => handleGoToProfile(item.id)}
+                  size="small"
                 >
                   <Card.Meta title={item.name} description={`id: ${item.id}`} />
                 </Card>
