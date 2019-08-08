@@ -8,8 +8,7 @@ import store from './configureStore';
 import './assets/styles/index.scss';
 
 import WelcomeContainer from './Components/Welcome/WelcomeContainer';
-import HeroListContainer from './Components/HeroList/HeroListContainer';
-import HeroProfileContainer from './Components/HeroProfile/HeroProfileContainer';
+import Heroes from './Components/Heroes/Heroes';
 
 function App({ location }) {
   return (
@@ -26,10 +25,7 @@ function App({ location }) {
         </header>
         <div className="main-content">
           <Route path="/" exact component={WelcomeContainer} />
-          <div className="background">
-            <Route path="/heroes" component={HeroListContainer} />
-            <Route path="/heroes/:heroId" component={HeroProfileContainer} />
-          </div>
+          <Route path="/heroes" component={Heroes} />
         </div>
       </div>
     </Provider>
